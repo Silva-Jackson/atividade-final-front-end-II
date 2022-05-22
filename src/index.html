@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+    <!-- teste para verificar TS
+      <input type="number" class="teste" value="3" /> -->
     <div id="container">
       <div class="section"></div>
       <div class="section containerLogin">
@@ -26,7 +28,7 @@
 
           <div class="wrapInput margin-top-35 margin-bottom-35">
             <!-- fazer login pelo username em vez do e-mail seria uma saída melhor? -->
-            <input id="inputUsername" class="inputForm" type="email" name="username" autocomplete="off" required />
+            <input id="inputUsername" class="inputForm" type="text" name="username" autocomplete="off" required />
             <label for="inputUsername" class="focusInputForm" data-placeholder="Nome de Usuário"></label>
           </div>
           <div class="wrapInput margin-bottom-35">
@@ -45,18 +47,18 @@
         </form>
       </div>
     </div>
-    <script>
+    <script src="./js/index.js">
       // para manter placeholder pequeno quando inserir nome e sair do campo
-      let inputs = document.getElementsByClassName("inputForm");
-      for (let input of inputs) {
-        input.addEventListener("blur", () => {
-          if (input.value.trim() != "") {
-            input.classList.add("has-val");
-          } else {
-            input.classList.remove("has-val");
-          }
-        });
-      }
+      // let inputs = document.getElementsByClassName("inputForm");
+      // for (let input of inputs) {
+      //   input.addEventListener("blur", () => {
+      //     if (input.value.trim() != "") {
+      //       input.classList.add("has-val");
+      //     } else {
+      //       input.classList.remove("has-val");
+      //     }
+      //   });
+      // }
     </script>
   </body>
 </html>

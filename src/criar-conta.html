@@ -10,7 +10,7 @@
   <body>
     <div id="container">
       <div class="section"></div>
-      <div class="section containerLogin">
+      <div id="createAccount" class="section containerLogin">
         <!-- <h3>Entre no sistema de recados</h3>
         <form id="login" action="">
           <label for="username">Nome de Usuário:</label>
@@ -21,12 +21,16 @@
           <input type="submit" value="Entrar" />
           <input type="button" value="Criar Conta" /> 
         </form>-->
-        <form id="loginForm" class="loginForm" action="">
+        <form id="accountForm" class="loginForm" action="">
           <h3 class="loginFormTitle">Crie a sua Conta</h3>
 
           <div class="wrapInput margin-top-35 margin-bottom-35">
-            <input id="inputUsername" class="inputForm" type="email" name="username" autocomplete="off" required />
-            <label for="inputUsername" class="focusInputForm" data-placeholder="Nome de Usuário"></label>
+            <input id="email" class="inputForm" type="email" name="email" autocomplete="off" required />
+            <label for="email" class="focusInputForm" data-placeholder="E-mail"></label>
+          </div>
+          <div class="wrapInput margin-bottom-35">
+            <input id="username" class="inputForm" type="text" name="username" autocomplete="off" required />
+            <label for="username" class="focusInputForm" data-placeholder="Nome de Usuário"></label>
           </div>
           <div class="wrapInput margin-bottom-35">
             <input id="inputPassword" class="inputForm" type="password" name="password" autocomplete="off" required />
@@ -37,7 +41,8 @@
             <label for="repeatPassword" class="focusInputForm" data-placeholder="Repita sua Senha"></label>
           </div>
 
-          <button class="loginFormBtn">Criar Conta</button>
+          <input type="submit" class="loginFormBtn" value="Crie sua conta agora" />
+          <!-- <button class="loginFormBtn">Criar Conta</button> -->
           <!-- <div class="containerLoginFormBtn"> -->
           <!-- </div> -->
           <!-- <ul class="loginUtils"> -->
@@ -49,7 +54,7 @@
         </form>
       </div>
     </div>
-    <script>
+    <script src="./js/create-account.js">
       // para manter placeholder pequeno quando inserir nome e sair do campo
       let inputs = document.getElementsByClassName("inputForm");
       for (let input of inputs) {
