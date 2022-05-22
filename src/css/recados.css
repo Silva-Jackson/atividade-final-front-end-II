@@ -1,0 +1,295 @@
+:root {
+  --main-color: #0041cc;
+  --text1: #999;
+  --highlight-text: #222;
+  --input-text: #555;
+  --white-color: #fff;
+  --cancel-button: #f44336;
+  --background-modal: rgba(0, 0, 0, 0.8);
+  --my-messages: #ebf1ff;
+  --table-odd-lines: #c2d4ff;
+  --table-lines: #99b9ff;
+  --table-hover: #709dff;
+  --table-head: #1f66ff;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--highlight-text);
+  background-color: var(--my-messages);
+  padding: 0;
+  margin: 0;
+}
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+/* Full-width input fields */
+/* input[type="password"], */
+input[type="text"] {
+  width: 50vw;
+  min-height: 50px;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid var(--input-text);
+  box-sizing: border-box;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 3% 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+form#seusRecados {
+  margin: 2% 0;
+}
+input#descRecado,
+input#newDesc {
+  width: 20vw;
+  min-width: fit-content;
+  /* margin: 0; */
+}
+
+input#salvaRecado {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* padding: 20px; */
+  margin: 20px 0 20px 0px;
+  width: 10vw;
+  min-width: 100px;
+  max-width: 150px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+/* div {
+  margin: 40%;
+} */
+/* div.editaRecado {
+  padding-top: 50px;
+} */
+/* .closeBtn {
+  width: 100%;
+  height: 20px;
+} */
+/* Set a style for all buttons */
+button {
+  /* background-color: #04aa6d; */
+  color: var(--white-color);
+  padding: 20px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  max-height: 50px;
+  /* width: 20vw; */
+  border-radius: 10px;
+  background-color: var(--main-color);
+  text-transform: uppercase;
+  /* font-size: 16px; */
+}
+input.apagaRecado {
+  padding: 8px;
+  /* margin-left: 10px; */
+  border: none;
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: var(--cancel-button);
+  color: var(--white-color);
+  text-transform: uppercase;
+}
+
+input.editaRecado {
+  padding: 8px;
+  margin-left: 5px;
+  border: none;
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  text-transform: uppercase;
+}
+table {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+th {
+  height: 50px;
+  background-color: var(--table-head);
+  color: var(--white-color);
+  text-transform: uppercase;
+}
+table,
+th,
+td {
+  border-bottom: 1px solid var(--input-text);
+}
+.tableId {
+  width: 30px;
+}
+.tableActions {
+  width: 180px;
+  padding: 5px 5px;
+}
+tr:nth-child(even) {
+  background-color: var(--table-lines);
+}
+tr:nth-child(odd) {
+  background-color: var(--table-odd-lines);
+}
+tr:hover {
+  background-color: var(--table-hover);
+}
+button:hover,
+input#salvaRecado:hover,
+input.apagaRecado:hover,
+input.editaRecado:hover {
+  opacity: 0.75;
+  transition: all 0.4s;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 10px;
+  font-size: 12px;
+  background-color: var(--cancel-button);
+}
+/* .cancelbtn:hover {
+  width: auto; 
+  padding: 10px; 
+  margin-left: 10%;
+  background-color: var(--text1);
+} */
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  /* margin: 24px 0 12px 0; */
+  position: relative;
+}
+/* 
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+} */
+
+.container {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btnSair {
+  position: fixed;
+  right: 10px;
+  top: 0;
+  /* width: 50px; */
+  /* height: 30px; */
+  /* background-color: red; */
+  /* color: white; */
+  text-align: center;
+  padding: 0;
+  border-radius: 10px;
+  background-color: var(--my-messages);
+  font-size: 50px;
+  margin: 0;
+  /* opacity: 1; */
+}
+a.sair,
+a.sair:visited {
+  text-decoration: none;
+  color: var(--highlight-text);
+}
+a.sair:hover {
+  color: var(--cancel-button);
+}
+/* span.psw {
+  float: right;
+  padding-top: 16px;
+} */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /*Stay in place*/
+  z-index: 1; /*Sit on top*/
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--background-modal); /*Fallback color*/
+  /*background-color: rgba(0, 0, 0, 0.4);  Black w/ opacity */
+  /* padding-top: auto; */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--table-odd-lines);
+  margin: 15% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  padding: 0px 20px 10px 20px;
+  border: 5px solid var(--table-lines);
+  border-radius: 10px;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  color: var(--highlight-text);
+  font-size: 35px;
+  font-weight: bolder;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

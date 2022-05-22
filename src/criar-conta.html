@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Recados - Criar Conta</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="section"></div>
+      <div class="section containerLogin">
+        <!-- <h3>Entre no sistema de recados</h3>
+        <form id="login" action="">
+          <label for="username">Nome de Usuário:</label>
+          <input type="email" name="username" id="username" placeholder="seu-email@seuemail.com" required />
+          <label for="username">Senha:</label>
+          <input type="password" name="username" id="username" placeholder="sua-senha" required />
+
+          <input type="submit" value="Entrar" />
+          <input type="button" value="Criar Conta" /> 
+        </form>-->
+        <form id="loginForm" class="loginForm" action="">
+          <h3 class="loginFormTitle">Crie a sua Conta</h3>
+
+          <div class="wrapInput margin-top-35 margin-bottom-35">
+            <input id="inputUsername" class="inputForm" type="email" name="username" autocomplete="off" required />
+            <label for="inputUsername" class="focusInputForm" data-placeholder="Nome de Usuário"></label>
+          </div>
+          <div class="wrapInput margin-bottom-35">
+            <input id="inputPassword" class="inputForm" type="password" name="password" autocomplete="off" required />
+            <label for="inputPassword" class="focusInputForm" data-placeholder="Senha"></label>
+          </div>
+          <div class="wrapInput margin-bottom-35">
+            <input id="repeatPassword" class="inputForm" type="password" name="password" autocomplete="off" required />
+            <label for="repeatPassword" class="focusInputForm" data-placeholder="Repita sua Senha"></label>
+          </div>
+
+          <button class="loginFormBtn">Criar Conta</button>
+          <!-- <div class="containerLoginFormBtn"> -->
+          <!-- </div> -->
+          <!-- <ul class="loginUtils"> -->
+          <!-- <li class="margin-top-8 margin-bottom-8"> -->
+          <!-- <p class="text1">Ainda não tem conta?
+              <a href="criar-conta.html" class="text2">Criar Conta</a></p>
+             </li> 
+          </ul> -->
+        </form>
+      </div>
+    </div>
+    <script>
+      // para manter placeholder pequeno quando inserir nome e sair do campo
+      let inputs = document.getElementsByClassName("inputForm");
+      for (let input of inputs) {
+        input.addEventListener("blur", () => {
+          if (input.value.trim() != "") {
+            input.classList.add("has-val");
+          } else {
+            input.classList.remove("has-val");
+          }
+        });
+      }
+    </script>
+    <!-- <div id="container">
+      <div class="section"></div>
+      <div class="section containerLogin" >
+        <h3>Crie a Sua Conta</h3>
+        <form id="login" action="">
+          <label for="username">Nome de Usuário:</label>
+          <input type="email" name="username" id="username" placeholder="seu-email@seuemail.com" required />
+
+          <label for="username">Senha:</label>
+          <input type="password" name="username" id="username" placeholder="sua-senha" required />
+
+          <label for="username">Repita sua Senha:</label>
+          <input type="password" name="username" id="username" placeholder="sua-senha" required />
+
+          <input type="submit" value="Criar Conta" />
+        </form>
+      </div>
+    </div>
+     -->
+  </body>
+</html>
