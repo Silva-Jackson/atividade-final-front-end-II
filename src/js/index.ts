@@ -1,5 +1,3 @@
-//criar usuário
-
 //fazer login
 
 // para manter placeholder pequeno quando inserir nome e sair do campo
