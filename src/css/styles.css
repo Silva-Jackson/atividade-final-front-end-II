@@ -1,7 +1,8 @@
 :root {
   --main-color: #1f66ff;
+  --backgroung-color: #00000010;
   /* --link-color: #666; */
-  --text1: #999;
+  --text1: #666;
   --highlight-text: #333;
   --input-text: #555;
   --white-color: #fff;
@@ -16,6 +17,7 @@ body {
   width: 100vw;
   height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--backgroung-color);
 }
 
 div#container {
@@ -49,7 +51,7 @@ div#container {
   justify-content: center;
   flex: 1;
   margin: 10px;
-  background-color: white;
+  /* background-color: white; */
 }
 /* 
 #login {
@@ -115,10 +117,11 @@ button:hover {
 }
 
 .wrapInput {
-  max-width: 100%;
+  max-width: 60%;
   max-height: 100%;
   position: relative;
   border-bottom: 2px solid var(--text1);
+  margin: 5% 20%;
 }
 
 .inputForm {
@@ -173,6 +176,7 @@ button:hover {
   top: -20px;
   font-size: 15px;
 }
+/* color: blue; */
 .inputForm:focus + .focusInputForm::before {
   width: 100%;
 }
@@ -180,6 +184,9 @@ button:hover {
   top: -20px;
   font-size: 15px;
 }
+/* .focusInputForm::after {
+  color: #1f66ff;
+} */
 .has-val.inputForm + .focusInputForm::before {
   width: 100%;
 }
@@ -193,12 +200,13 @@ button:hover {
   justify-content: center;
   align-items: center; */
   /* padding: 0 20px; */
-  width: 100%;
+  width: 50%;
   height: 50px;
   background-color: var(--main-color);
   border-radius: 10px;
   transition: all 0.4s;
   font-weight: bold;
+  margin: 5% 25%;
 }
 .loginFormBtn:hover {
   background-color: var(--input-text);

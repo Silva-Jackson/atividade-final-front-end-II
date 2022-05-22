@@ -1,16 +1,17 @@
 :root {
   --main-color: #0041cc;
-  --text1: #999;
-  --highlight-text: #222;
-  --input-text: #555;
-  --white-color: #fff;
+  --btn-apagar: #999999;
+  --highlight-text: #111111;
+  --input-text: #555555;
+  --white-color: #ffffff;
   --cancel-button: #f44336;
-  --background-modal: rgba(0, 0, 0, 0.8);
-  --my-messages: #ebf1ff;
-  --table-odd-lines: #c2d4ff;
-  --table-lines: #99b9ff;
-  --table-hover: #709dff;
-  --table-head: #1f66ff;
+  --background-modal: #000000cc;
+  --modal-color: #cccccc;
+  --my-messages: #00000030;
+  /* --table-odd-lines: #00000010; */
+  --table-lines: #00000010;
+  --table-hover: #00000050;
+  --table-head: #002980e6;
 }
 
 body {
@@ -53,6 +54,9 @@ h1 {
 }
 form#seusRecados {
   margin: 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 input#descRecado,
 input#newDesc {
@@ -78,6 +82,7 @@ input#salvaRecado {
   text-transform: uppercase;
   font-weight: 700;
 }
+
 /* div {
   margin: 40%;
 } */
@@ -111,7 +116,7 @@ input.apagaRecado {
   width: 80px;
   height: 30px;
   border-radius: 10px;
-  background-color: var(--cancel-button);
+  background-color: var(--btn-apagar);
   color: var(--white-color);
   text-transform: uppercase;
 }
@@ -129,29 +134,33 @@ input.editaRecado {
   text-transform: uppercase;
 }
 table {
-  margin-top: 20px;
-  width: 100%;
+  margin: 20px 10%;
+  width: 80%;
   text-align: center;
-  border-collapse: collapse;
-  border-radius: 5px;
+  /* border-collapse: collapse; */
+  border: 0px solid;
+  border-radius: 10px;
 }
 th {
   height: 50px;
   background-color: var(--table-head);
   color: var(--white-color);
   text-transform: uppercase;
+  /* border-radius: 5px; */
+  /* border-collapse: collapse; */
 }
-table,
+/* table,
 th,
 td {
   border-bottom: 1px solid var(--input-text);
-}
+} */
+
 .tableId {
   width: 30px;
 }
 .tableActions {
   width: 180px;
-  padding: 5px 5px;
+  padding: 5px;
 }
 tr:nth-child(even) {
   background-color: var(--table-lines);
@@ -164,9 +173,13 @@ tr:hover {
 }
 button:hover,
 input#salvaRecado:hover,
-input.apagaRecado:hover,
 input.editaRecado:hover {
-  opacity: 0.75;
+  /* opacity: 0.75; */
+  transition: all 0.4s;
+  background-color: var(--input-text);
+}
+input.apagaRecado:hover {
+  background-color: var(--cancel-button);
   transition: all 0.4s;
 }
 
@@ -175,6 +188,7 @@ input.editaRecado:hover {
   padding: 10px;
   font-size: 12px;
   background-color: var(--cancel-button);
+  /* color: var(--white-color); */
 }
 /* .cancelbtn:hover {
   width: auto; 
@@ -200,28 +214,36 @@ img.avatar {
   flex-direction: column;
   align-items: center;
 }
-.btnSair {
+/* .btnSair {
   position: fixed;
   right: 10px;
   top: 0;
   /* width: 50px; */
-  /* height: 30px; */
-  /* background-color: red; */
-  /* color: white; */
+/* height: 30px; */
+/* background-color: red; */
+/* color: white; 
   text-align: center;
   padding: 0;
   border-radius: 10px;
+  background: none;
   background-color: var(--my-messages);
-  font-size: 50px;
   margin: 0;
-  /* opacity: 1; */
+  /* opacity: 1; 
+} */
+div.logout {
+  display: flex;
+  position: relative;
 }
-a.sair,
-a.sair:visited {
+a.logout,
+a.logout:visited {
   text-decoration: none;
   color: var(--highlight-text);
+  font-size: 50px;
+  right: 0;
+  top: 0;
+  position: absolute;
 }
-a.sair:hover {
+a.logout:hover {
   color: var(--cancel-button);
 }
 /* span.psw {
@@ -246,7 +268,7 @@ a.sair:hover {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: var(--table-odd-lines);
+  background-color: var(--modal-color);
   margin: 15% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   padding: 0px 20px 10px 20px;
   border: 5px solid var(--table-lines);
@@ -257,7 +279,7 @@ a.sair:hover {
 /* The Close Button (x) */
 .close {
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: 0px;
   color: var(--highlight-text);
   font-size: 35px;
@@ -266,7 +288,7 @@ a.sair:hover {
 
 .close:hover,
 .close:focus {
-  color: var(--main-color);
+  color: var(--cancel-button);
   cursor: pointer;
 }
 
