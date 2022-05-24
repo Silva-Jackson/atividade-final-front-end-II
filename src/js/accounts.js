@@ -38,6 +38,10 @@ const createUser = (event) => {
     alert("Usuário criado com sucesso!");
     location.href = "../src/index.html";
 };
+const getLoggedUser = () => {
+    const loggedUser = JSON.parse(localStorage.getItem("loggedUser") || "[]");
+    return loggedUser;
+};
 const logIn = (event) => {
     event.preventDefault();
     const createdUser = getUsersLocalStorage();
@@ -48,6 +52,15 @@ const logIn = (event) => {
         alert("Usuário ou senha inválida");
         return;
     }
+    const loggedUser = getLoggedUser();
+    const userExists = loggedUser.find(({ username }) => username === foundUser.username);
+    if (userExists === undefined) {
+        loggedUser.push({
+            username,
+            password,
+        });
+    }
+    localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
     location.href = "../src/seus-recados.html";
 };
 const inputsAccount = document.getElementsByClassName("inputForm");

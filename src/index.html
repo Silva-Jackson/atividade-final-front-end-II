@@ -37,13 +37,18 @@
           </div>
 
           <input type="submit" class="loginFormBtn" value="Entrar" />
-
-          <!-- <button class="loginFormBtn">Entrar</button> -->
-          <!-- <div class="containerLoginFormBtn"> -->
-          <!-- </div> -->
-          <!-- <ul class="loginUtils"> -->
-          <!-- <li class="margin-top-8 margin-bottom-8"> -->
-          <p class="text1">Ainda não tem conta? <a href="criar-conta.html" class="text2">Criar Conta</a></p>
+          <div class="utils">
+            <p class="text1">
+              <input type="checkbox" id="remainLoggedIn" name="remainLoggedIn" value="" />
+              <label for="remainLoggedIn">Mantenha-me conectado.</label>
+            </p>
+            <!-- <button class="loginFormBtn">Entrar</button> -->
+            <!-- <div class="containerLoginFormBtn"> -->
+            <!-- </div> -->
+            <!-- <ul class="loginUtils"> -->
+            <!-- <li class="margin-top-8 margin-bottom-8"> -->
+            <p class="text1">Ainda não tem conta? <a href="criar-conta.html" class="text2">Criar Conta</a></p>
+          </div>
           <!-- </li> -->
           <!-- </ul> -->
         </form>
@@ -53,14 +58,17 @@
       // para manter placeholder pequeno quando inserir nome e sair do campo
       // let inputs = document.getElementsByClassName("inputForm");
       // for (let input of inputs) {
-      //   input.addEventListener("blur", () => {
-      //     if (input.value.trim() != "") {
-      //       input.classList.add("has-val");
-      //     } else {
-      //       input.classList.remove("has-val");
-      //     }
-      //   });
-      // }
+        //   input.addEventListener("blur", () => {
+          //     if (input.value.trim() != "") {
+            //       input.classList.add("has-val");
+            //     } else {
+              //       input.classList.remove("has-val");
+              //     }
+              //   });
+              // }
+    </script>
+    <script src="./js/recados.js">
+      // aqui verificar se usuário quer permanecer logado
     </script>
   </body>
 </html>

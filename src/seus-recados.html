@@ -19,7 +19,15 @@
         <h1>Meus Recados</h1>
         <form id="seusRecados">
           <!-- <label for="descRecado">Descrição:</label> -->
-          <input type="text" id="descRecado" name="descRecado" placeholder="Descrição" required autocomplete="off" />
+          <input
+            type="text"
+            maxlength="15"
+            id="descRecado"
+            name="descRecado"
+            placeholder="Descrição"
+            required
+            autocomplete="off"
+          />
           <!-- <label for="detalheRecado">Detalhes:</label> -->
           <input
             type="text"
@@ -56,7 +64,7 @@
               >
               <div class="editaRecado"></div>
               <label for="newDesc">Descrição:</label>
-              <input type="text" placeholder="Descrição" id="newDesc" name="newDesc" value="" />
+              <input maxlength="10" type="text" placeholder="Descrição" id="newDesc" name="newDesc" value="" />
 
               <label for="newDetail">Detalhamento:</label>
               <input type="text" placeholder="Detalhamento" id="newDetail" name="newDetail" value="" />

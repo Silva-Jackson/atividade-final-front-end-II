@@ -140,6 +140,33 @@ const recebeEdicao = (id: number) => {
   localStorage.removeItem("recadoEditado");
 };
 
+// se marcar para não manter conectado na hora de sair apaga do localstorage, checar no logout
+// const checkRemainLogged = () => {
+//   // const createdUser: Array<UserLogin> = getUsersLocalStorage();
+//   const username = loginForm?.inputUsername.value;
+//   const password = loginForm?.inputPassword.value;
+//   const keepLoggedIn = loginForm.remainLoggedIn.checked;
+
+//   const loggedUser = getUsersLocalStorage();
+
+//   localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+
+//   if (!keepLoggedIn) {
+//     const loggedUser = getSessionUser();
+
+//     checkLoggedUser(loggedUser);
+//     location.href = "../src/seus-recados.html";
+//     return;
+//   }
+
+//   loggedUser.push({
+//     username,
+//     password,
+//   });
+
+//   location.href = "../src/seus-recados.html";
+// };
+
 form?.addEventListener("submit", salvarRecado);
 
 document.addEventListener("DOMContentLoaded", preencherTabela);

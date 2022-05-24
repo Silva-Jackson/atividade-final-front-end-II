@@ -1,7 +1,7 @@
 const formUser = document.querySelector("#accountForm") as HTMLFormElement;
 const loginForm = document.querySelector("#loginForm") as HTMLFormElement;
 interface User {
-  email: string;
+  email?: string;
   username: string;
   password: string;
 }
@@ -61,7 +61,13 @@ const createUser = (event: Event) => {
   //   formUser.reset();
 };
 
-//fazer login criar
+//fazer login
+// se for usar manter logado ideal seria salvar na local.storage o usuário
+// caso sim na parte dos recados verificar o checkbox e buscar do local
+const getLoggedUser = (): Array<UserLogin> => {
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser") || "[]") as Array<UserLogin>;
+  return loggedUser;
+};
 
 const logIn = (event: Event) => {
   event.preventDefault();
@@ -71,6 +77,8 @@ const logIn = (event: Event) => {
 
   const username = loginForm?.inputUsername.value;
   const password = loginForm?.inputPassword.value;
+  // const email = formUser?.inputEmail.value;
+
   // const users = getUsersLocalStorage();
   const foundUser = createdUser.find((user) => user.username === username && user.password === password);
 
@@ -78,8 +86,21 @@ const logIn = (event: Event) => {
     alert("Usuário ou senha inválida");
     return;
   }
+  const loggedUser = getLoggedUser();
 
+  // checar se o usuario já está logado pra nao entrar 2x na local storage
+  const userExists = loggedUser.find(({ username }) => username === foundUser.username);
+
+  if (userExists === undefined) {
+    loggedUser.push({
+      username,
+      password,
+    });
+  }
+  localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
   location.href = "../src/seus-recados.html";
+
+  // const email: string = formUser?.email.value;
 };
 //mudar aparencia campos quando != vazio
 const inputsAccount: any = document.getElementsByClassName("inputForm");

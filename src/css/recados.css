@@ -116,7 +116,7 @@ input.apagaRecado {
   width: 80px;
   height: 30px;
   border-radius: 10px;
-  background-color: var(--btn-apagar);
+  background-color: var(--cancel-button);
   color: var(--white-color);
   text-transform: uppercase;
 }
@@ -173,14 +173,11 @@ tr:hover {
 }
 button:hover,
 input#salvaRecado:hover,
-input.editaRecado:hover {
+input.editaRecado:hover,
+input.apagaRecado:hover {
   /* opacity: 0.75; */
   transition: all 0.4s;
   background-color: var(--input-text);
-}
-input.apagaRecado:hover {
-  background-color: var(--cancel-button);
-  transition: all 0.4s;
 }
 
 /* Extra styles for the cancel button */
