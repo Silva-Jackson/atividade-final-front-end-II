@@ -8,26 +8,13 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <!-- teste para verificar TS
-      <input type="number" class="teste" value="3" /> -->
     <div id="container">
       <div class="section"></div>
       <div class="section containerLogin">
-        <!-- <h3>Entre no sistema de recados</h3>
-        <form id="login" action="">
-          <label for="username">Nome de Usuário:</label>
-          <input type="email" name="username" id="username" placeholder="seu-email@seuemail.com" required />
-          <label for="username">Senha:</label>
-          <input type="password" name="username" id="username" placeholder="sua-senha" required />
-
-          <input type="submit" value="Entrar" />
-          <input type="button" value="Criar Conta" /> 
-        </form>-->
         <form id="loginForm" class="loginForm" action="">
           <h3 class="loginFormTitle">Sistema de Recados</h3>
 
           <div class="wrapInput margin-top-35 margin-bottom-35">
-            <!-- fazer login pelo username em vez do e-mail seria uma saída melhor? -->
             <input id="inputUsername" class="inputForm" type="text" name="username" autocomplete="off" required />
             <label for="inputUsername" class="focusInputForm" data-placeholder="Nome de Usuário"></label>
           </div>
@@ -38,37 +25,11 @@
 
           <input type="submit" class="loginFormBtn" value="Entrar" />
           <div class="utils">
-            <!-- <p class="text1">
-              <input type="checkbox" id="remainLoggedIn" name="remainLoggedIn" value="" />
-              <label for="remainLoggedIn">Mantenha-me conectado.</label>
-            </p> -->
-            <!-- <button class="loginFormBtn">Entrar</button> -->
-            <!-- <div class="containerLoginFormBtn"> -->
-            <!-- </div> -->
-            <!-- <ul class="loginUtils"> -->
-            <!-- <li class="margin-top-8 margin-bottom-8"> -->
             <p class="text1">Ainda não tem conta? <a href="criar-conta.html" class="text2">Criar Conta</a></p>
           </div>
-          <!-- </li> -->
-          <!-- </ul> -->
         </form>
       </div>
     </div>
-    <script src="./js/accounts.js">
-      // para manter placeholder pequeno quando inserir nome e sair do campo
-      // let inputs = document.getElementsByClassName("inputForm");
-      // for (let input of inputs) {
-        //   input.addEventListener("blur", () => {
-          //     if (input.value.trim() != "") {
-            //       input.classList.add("has-val");
-            //     } else {
-              //       input.classList.remove("has-val");
-              //     }
-              //   });
-              // }
-    </script>
-    <!-- <script src="./js/recados.js">
-      // aqui verificar se usuário quer permanecer logado
-    </script> -->
+    <script src="./js/accounts.js"></script>
   </body>
 </html>
