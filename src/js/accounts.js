@@ -19,6 +19,7 @@ const createUser = (event) => {
     }
     const users = getUsersLocalStorage();
     const userData = {
+        id: defineUserId() + 1,
         email,
         username,
         password,
@@ -30,16 +31,18 @@ const createUser = (event) => {
         }
     }
     users.push({
+        id: defineUserId() + 1,
         email,
         username,
         password,
+        messages: [],
     });
     refreshLocalStorage(users);
     alert("Usuário criado com sucesso!");
     location.href = "../src/index.html";
 };
 const getLoggedUser = () => {
-    const loggedUser = JSON.parse(localStorage.getItem("loggedUser") || "[]");
+    const loggedUser = JSON.parse(localStorage.getItem("current") || "[]");
     return loggedUser;
 };
 const logIn = (event) => {
@@ -48,20 +51,26 @@ const logIn = (event) => {
     const username = loginForm === null || loginForm === void 0 ? void 0 : loginForm.inputUsername.value;
     const password = loginForm === null || loginForm === void 0 ? void 0 : loginForm.inputPassword.value;
     const foundUser = createdUser.find((user) => user.username === username && user.password === password);
+    console.log(foundUser);
     if (foundUser === undefined) {
         alert("Usuário ou senha inválida");
         return;
     }
     const loggedUser = getLoggedUser();
-    const userExists = loggedUser.find(({ username }) => username === foundUser.username);
-    if (userExists === undefined) {
-        loggedUser.push({
-            username,
-            password,
-        });
-    }
-    localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+    const currentUser = foundUser.id;
+    sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
     location.href = "../src/seus-recados.html";
+};
+const defineUserId = () => {
+    let max = 0;
+    const currentUser = getUsersLocalStorage();
+    currentUser.forEach((user) => {
+        if (user.id > max) {
+            max = user.id;
+        }
+    });
+    return max;
 };
 const inputsAccount = document.getElementsByClassName("inputForm");
 for (let input of inputsAccount) {

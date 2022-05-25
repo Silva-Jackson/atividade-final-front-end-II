@@ -11,15 +11,18 @@ const atualizarLocalStorage = (recados) => {
 };
 const salvarRecado = (event) => {
     event.preventDefault();
+    const userId = checkCurrentUser();
     const descricao = form === null || form === void 0 ? void 0 : form.descRecado.value;
     const detalhe = form === null || form === void 0 ? void 0 : form.detalheRecado.value;
-    const recados = recuperarLocalStorage();
-    recados.push({
+    const message = `${userId}${descricao}${detalhe}`;
+    const recadosUser = JSON.parse("`${recados}_${currentUser}`");
+    console.log(recadosUser);
+    recadosUser.push({
+        userId,
         id: definirID() + 1,
         descricao,
         detalhe,
     });
-    atualizarLocalStorage(recados);
     alert("Recado adicionado com sucesso!");
     preencherTabela();
     form.reset();
@@ -66,7 +69,7 @@ const criarEdicao = (id) => {
         return;
     const popup = document.getElementById("id01");
     window.onclick = (cliqueFora) => {
-        if (cliqueFora.target == popup) {
+        if (cliqueFora.target === popup) {
             popup.style.display = "none";
         }
     };
@@ -82,6 +85,7 @@ const recebeEdicao = (id) => {
         return;
     const novoRecado = [
         {
+            userId: checkCurrentUser(),
             id: indiceRecado + 1,
             descricao: modal.newDesc.value,
             detalhe: modal.newDetail.value,
@@ -99,6 +103,15 @@ const recebeEdicao = (id) => {
     atualizarLocalStorage(recados);
     preencherTabela();
     localStorage.removeItem("recadoEditado");
+};
+const userLogout = () => {
+    localStorage.removeItem("currentUser");
+    sessionStorage.removeItem("currentUser");
+    location.href = "../src/index.html";
+};
+const checkCurrentUser = () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]");
+    return currentUser;
 };
 form === null || form === void 0 ? void 0 : form.addEventListener("submit", salvarRecado);
 document.addEventListener("DOMContentLoaded", preencherTabela);

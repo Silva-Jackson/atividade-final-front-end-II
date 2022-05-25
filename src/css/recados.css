@@ -231,14 +231,16 @@ div.logout {
   display: flex;
   position: relative;
 }
-a.logout,
-a.logout:visited {
+button.logout {
   text-decoration: none;
+  background: none;
   color: var(--highlight-text);
   font-size: 50px;
   right: 0;
   top: 0;
   position: absolute;
+  padding: 0;
+  margin: 0;
 }
 a.logout:hover {
   color: var(--cancel-button);

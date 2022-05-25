@@ -1,22 +1,26 @@
 const formUser = document.querySelector("#accountForm") as HTMLFormElement;
 const loginForm = document.querySelector("#loginForm") as HTMLFormElement;
 interface User {
+  id: number;
   email?: string;
   username: string;
   password: string;
+  messages?: [];
 }
 interface Login {
+  id: number;
   username: string;
   password: string;
+  messages?: [];
 }
-interface UserLogin extends User, Login {}
+// interface UserLogin extends User, Login {}
 
-const getUsersLocalStorage = (): Array<UserLogin> => {
-  const users = JSON.parse(localStorage.getItem("users") || "[]") as Array<UserLogin>;
+const getUsersLocalStorage = (): Array<User> => {
+  const users = JSON.parse(localStorage.getItem("users") || "[]") as Array<User>;
   return users;
 };
 
-const refreshLocalStorage = (users: Array<UserLogin>) => {
+const refreshLocalStorage = (users: Array<User>) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
@@ -34,6 +38,7 @@ const createUser = (event: Event) => {
   const users = getUsersLocalStorage();
 
   const userData: User = {
+    id: defineUserId() + 1,
     email,
     username,
     password,
@@ -48,9 +53,11 @@ const createUser = (event: Event) => {
     }
   }
   users.push({
+    id: defineUserId() + 1,
     email,
     username,
     password,
+    messages: [],
   });
 
   refreshLocalStorage(users);
@@ -64,23 +71,25 @@ const createUser = (event: Event) => {
 //fazer login
 // se for usar manter logado ideal seria salvar na local.storage o usuário
 // caso sim na parte dos recados verificar o checkbox e buscar do local
-const getLoggedUser = (): Array<UserLogin> => {
-  const loggedUser = JSON.parse(localStorage.getItem("loggedUser") || "[]") as Array<UserLogin>;
+const getLoggedUser = (): Array<Login> => {
+  const loggedUser = JSON.parse(localStorage.getItem("current") || "[]") as Array<Login>;
   return loggedUser;
 };
 
 const logIn = (event: Event) => {
   event.preventDefault();
 
-  const createdUser: Array<UserLogin> = getUsersLocalStorage();
+  const createdUser: Array<User> = getUsersLocalStorage();
   //  JSON.parse(localStorage.getItem("users") || "[]");
 
   const username = loginForm?.inputUsername.value;
   const password = loginForm?.inputPassword.value;
+  // const remainLogged = loginForm.remainLoggedIn.checked;
   // const email = formUser?.inputEmail.value;
 
   // const users = getUsersLocalStorage();
   const foundUser = createdUser.find((user) => user.username === username && user.password === password);
+  console.log(foundUser);
 
   if (foundUser === undefined) {
     alert("Usuário ou senha inválida");
@@ -89,18 +98,39 @@ const logIn = (event: Event) => {
   const loggedUser = getLoggedUser();
 
   // checar se o usuario já está logado pra nao entrar 2x na local storage
-  const userExists = loggedUser.find(({ username }) => username === foundUser.username);
+  // const userExists = loggedUser.find(({username}) => username === foundUser.username);
+  // // for (const user of createdUser) {
+  // //   console.log(loggedUser);
+  // //   console.log(foundUser);
+  // // }
 
-  if (userExists === undefined) {
-    loggedUser.push({
-      username,
-      password,
-    });
-  }
-  localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+  // if (userExists === undefined) {
+  //   return; // loggedUser.push({
+  //   //   id,
+  //   //   username,
+  //   //   password,
+  //   // });
+  // }
+  const currentUser = foundUser.id;
+  sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  // podemos usar isso para asignar um recado a um user?
+  // sessionStorage.setItem("currentUser", JSON.stringify(foundUser.id));
   location.href = "../src/seus-recados.html";
 
   // const email: string = formUser?.email.value;
+};
+const defineUserId = (): number => {
+  let max = 0;
+
+  const currentUser = getUsersLocalStorage();
+
+  currentUser.forEach((user) => {
+    if (user.id > max) {
+      max = user.id;
+    }
+  });
+  return max;
 };
 //mudar aparencia campos quando != vazio
 const inputsAccount: any = document.getElementsByClassName("inputForm");

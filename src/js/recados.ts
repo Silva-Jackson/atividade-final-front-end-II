@@ -1,11 +1,18 @@
 const form = document.querySelector("#seusRecados") as HTMLFormElement;
-const corpoTabela = document.querySelector("#corpoTabela") as HTMLElement;
+const corpoTabela = document.querySelector("#corpoTabela") as HTMLTableElement;
 const modal = document.querySelector("#editarRecado") as HTMLFormElement;
 
 interface Recado {
+  userId: number;
   id: number;
   descricao: string;
   detalhe: string;
+}
+interface Login {
+  id: number;
+  username: string;
+  password: string;
+  messages?: [];
 }
 
 const recuperarLocalStorage = (): Array<Recado> => {
@@ -20,19 +27,24 @@ const atualizarLocalStorage = (recados: Array<Recado>) => {
 
 const salvarRecado = (event: Event) => {
   event.preventDefault();
+  const userId: number = checkCurrentUser();
+  const descricao: string = form?.descRecado.value;
+  const detalhe: string = form?.detalheRecado.value;
+  // const recados = recuperarLocalStorage();
+  // console.log(recados);
+  const message = `${userId}${descricao}${detalhe}`;
+  // localStorage.setItem(`${recados}_${currentUser}`, JSON.stringify(recados));
+  const recadosUser = JSON.parse("`${recados}_${currentUser}`");
+  console.log(recadosUser);
 
-  const descricao = form?.descRecado.value;
-  const detalhe = form?.detalheRecado.value;
-
-  const recados = recuperarLocalStorage();
-
-  recados.push({
+  recadosUser.push({
+    userId,
     id: definirID() + 1,
     descricao,
     detalhe,
   });
 
-  atualizarLocalStorage(recados);
+  // atualizarLocalStorage(recados);
 
   alert("Recado adicionado com sucesso!");
 
@@ -98,7 +110,7 @@ const criarEdicao = (id: number) => {
   const popup = document.getElementById("id01") as HTMLElement;
 
   window.onclick = (cliqueFora) => {
-    if (cliqueFora.target == popup) {
+    if (cliqueFora.target === popup) {
       popup.style.display = "none";
     }
   };
@@ -120,6 +132,7 @@ const recebeEdicao = (id: number) => {
 
   const novoRecado = [
     {
+      userId: checkCurrentUser(),
       id: indiceRecado + 1,
       descricao: modal.newDesc.value,
       detalhe: modal.newDetail.value,
@@ -139,34 +152,46 @@ const recebeEdicao = (id: number) => {
   preencherTabela();
   localStorage.removeItem("recadoEditado");
 };
+const userLogout = () => {
+  // const currentUser = sessionStorage.getItem("currentUser");
+  // localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  localStorage.removeItem("currentUser");
+  sessionStorage.removeItem("currentUser");
+  location.href = "../src/index.html";
+  // const users: User[] = JSON.parse(localStorage.getItem("users") || "[]") as Array<User>;
+  // if (currentUser === null) {
+  //   return;
+  // }
+  // const currentUser = JSON.parse(loggedUser);
+  // const id = currentUser.id;
+  // const username = currentUser.username;
+  // const password = currentUser.password;
+  // const remainLogged = currentUser.remainLogged;
 
-// se marcar para não manter conectado na hora de sair apaga do localstorage, checar no logout
-// const checkRemainLogged = () => {
-//   // const createdUser: Array<UserLogin> = getUsersLocalStorage();
-//   const username = loginForm?.inputUsername.value;
-//   const password = loginForm?.inputPassword.value;
-//   const keepLoggedIn = loginForm.remainLoggedIn.checked;
+  // if (!currentUser[0].remainLogged) {
+  //   const indexUser = users.findIndex((index) => index.id === currentUser[0].id);
+  //   users.splice(indexUser, 1);
+  // }
+  // currentUser.push({
+  //   id,
+  //   username,
+  //   password,
+  //   remainLogged,
+  // });
+};
 
-//   const loggedUser = getUsersLocalStorage();
+const checkCurrentUser = () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "[]");
 
-//   localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+  // const users = JSON.parse(localStorage.getItem("users") || "[]") as Array<User>;
+  // // const user = currentUser.id
+  // const userId: number = currentUser[0].id;
+  // console.log(userId);
 
-//   if (!keepLoggedIn) {
-//     const loggedUser = getSessionUser();
+  // // esperar o Id do usuário para
+  // const indexUser = users.findIndex((index) => index.id === users[userId].id);
 
-//     checkLoggedUser(loggedUser);
-//     location.href = "../src/seus-recados.html";
-//     return;
-//   }
-
-//   loggedUser.push({
-//     username,
-//     password,
-//   });
-
-//   location.href = "../src/seus-recados.html";
-// };
-
+  return currentUser;
+};
 form?.addEventListener("submit", salvarRecado);
-
 document.addEventListener("DOMContentLoaded", preencherTabela);
