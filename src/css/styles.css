@@ -38,7 +38,7 @@ div#container {
 /* } */
 
 .section:first-child {
-  background-image: url(../assets/photo-1649780490583-12122384abda.avif);
+  background-image: url(../assets/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   /* background-position: right; */

@@ -35,7 +35,6 @@ const createUser = (event) => {
         email,
         username,
         password,
-        messages: [],
     });
     refreshLocalStorage(users);
     alert("Usuário criado com sucesso!");
@@ -51,13 +50,11 @@ const logIn = (event) => {
     const username = loginForm === null || loginForm === void 0 ? void 0 : loginForm.inputUsername.value;
     const password = loginForm === null || loginForm === void 0 ? void 0 : loginForm.inputPassword.value;
     const foundUser = createdUser.find((user) => user.username === username && user.password === password);
-    console.log(foundUser);
     if (foundUser === undefined) {
         alert("Usuário ou senha inválida");
         return;
     }
-    const loggedUser = getLoggedUser();
-    const currentUser = foundUser.id;
+    const currentUser = foundUser.username;
     sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     location.href = "../src/seus-recados.html";

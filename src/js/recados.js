@@ -3,41 +3,42 @@ const form = document.querySelector("#seusRecados");
 const corpoTabela = document.querySelector("#corpoTabela");
 const modal = document.querySelector("#editarRecado");
 const recuperarLocalStorage = () => {
-    const recados = JSON.parse(localStorage.getItem("recados") || "[]");
-    return recados;
+    const currentUser = checkCurrentUser();
+    const user = JSON.parse(localStorage.getItem(currentUser) || "[]");
+    return user;
 };
-const atualizarLocalStorage = (recados) => {
-    localStorage.setItem("recados", JSON.stringify(recados));
+const atualizarLocalStorage = (user) => {
+    const userMessage = checkCurrentUser();
+    localStorage.setItem(userMessage, JSON.stringify(user));
 };
 const salvarRecado = (event) => {
     event.preventDefault();
-    const userId = checkCurrentUser();
+    const user = checkCurrentUser();
     const descricao = form === null || form === void 0 ? void 0 : form.descRecado.value;
     const detalhe = form === null || form === void 0 ? void 0 : form.detalheRecado.value;
-    const message = `${userId}${descricao}${detalhe}`;
-    const recadosUser = JSON.parse("`${recados}_${currentUser}`");
-    console.log(recadosUser);
-    recadosUser.push({
-        userId,
+    const userMessage = recuperarLocalStorage();
+    userMessage.push({
+        user,
         id: definirID() + 1,
         descricao,
         detalhe,
     });
+    atualizarLocalStorage(userMessage);
     alert("Recado adicionado com sucesso!");
     preencherTabela();
     form.reset();
 };
 const preencherTabela = () => {
-    const recados = recuperarLocalStorage();
+    const userMessage = recuperarLocalStorage();
     corpoTabela.innerHTML = "";
-    for (const recado of recados) {
+    for (const messages of userMessage) {
         corpoTabela.innerHTML += `
         <tr>
-            <td class=tableId>${recado.id}</td>
-            <td class="descricao">${recado.descricao}</td>
-            <td class="detalhamento">${recado.detalhe}</td>
-            <td class="tableActions"><input type="button" class="apagaRecado" value="Apagar" onclick="apagarRecado(${recado.id})">
-            <input type="button" class="editaRecado" value="Editar" onclick="criarEdicao(${recado.id}),
+            <td class=tableId>${messages.id}</td>
+            <td class="descricao">${messages.descricao}</td>
+            <td class="detalhamento">${messages.detalhe}</td>
+            <td class="tableActions"><input type="button" class="apagaRecado" value="Apagar" onclick="apagarRecado(${messages.id})">
+            <input type="button" class="editaRecado" value="Editar" onclick="criarEdicao(${messages.id}),
             document.getElementById('id01').style.display='block'"></td>
         </tr>`;
     }
@@ -79,28 +80,29 @@ const criarEdicao = (id) => {
     localStorage.setItem("recadoEditado", JSON.stringify(indiceRecado));
 };
 const recebeEdicao = (id) => {
-    const recados = recuperarLocalStorage();
+    const currentUser = recuperarLocalStorage();
+    const user = checkCurrentUser();
     const indiceRecado = JSON.parse(localStorage.getItem("recadoEditado") || "");
     if (indiceRecado < 0)
         return;
     const novoRecado = [
         {
-            userId: checkCurrentUser(),
+            user,
             id: indiceRecado + 1,
             descricao: modal.newDesc.value,
             detalhe: modal.newDetail.value,
         },
     ];
-    for (let iRecados = 0, iEditado = recados.length; iRecados < iEditado; iRecados++) {
+    for (let iRecados = 0, iEditado = currentUser.length; iRecados < iEditado; iRecados++) {
         for (let i = 0, index = novoRecado.length; i < index; i++) {
-            if (recados[iRecados].id === novoRecado[i].id) {
-                recados.splice(iRecados, 1, novoRecado[i]);
+            if (currentUser[iRecados].id === novoRecado[i].id) {
+                currentUser.splice(iRecados, 1, novoRecado[i]);
             }
         }
     }
     const popup = document.getElementById("id01");
     popup.style.display = "none";
-    atualizarLocalStorage(recados);
+    atualizarLocalStorage(currentUser);
     preencherTabela();
     localStorage.removeItem("recadoEditado");
 };
