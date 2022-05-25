@@ -30,10 +30,23 @@ const createUser = (event: Event) => {
 
   const email: string = formUser?.email.value;
 
+  if (email.length < 5) {
+    alert("Digite um email válido!");
+    return;
+  }
+
   const username: string = formUser?.username.value;
 
+  if (username.length < 5) {
+    alert("Digite um nome de usuário com ao menos 5 caracteres!");
+    return;
+  }
   const password: string = formUser?.inputPassword.value;
 
+  if (password.length < 4) {
+    alert("Digite uma senha com ao menos 4 caracteres");
+    return;
+  }
   const verifyPsw: string = formUser?.repeatPassword.value;
 
   if (verifyPsw !== password) {
@@ -82,9 +95,9 @@ const logIn = (event: Event) => {
 
   const createdUser: Array<User> = getUsersLocalStorage();
 
-  const username = loginForm?.inputUsername.value;
+  const username: string = loginForm?.inputUsername.value;
 
-  const password = loginForm?.inputPassword.value;
+  const password: string = loginForm?.inputPassword.value;
 
   const foundUser = createdUser.find((user) => user.username === username && user.password === password);
 

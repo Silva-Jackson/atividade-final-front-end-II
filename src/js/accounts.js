@@ -11,8 +11,20 @@ const refreshLocalStorage = (users) => {
 const createUser = (event) => {
     event.preventDefault();
     const email = formUser === null || formUser === void 0 ? void 0 : formUser.email.value;
+    if (email.length < 5) {
+        alert("Digite um email válido!");
+        return;
+    }
     const username = formUser === null || formUser === void 0 ? void 0 : formUser.username.value;
+    if (username.length < 5) {
+        alert("Digite um nome de usuário com ao menos 5 caracteres!");
+        return;
+    }
     const password = formUser === null || formUser === void 0 ? void 0 : formUser.inputPassword.value;
+    if (password.length < 4) {
+        alert("Digite uma senha com ao menos 4 caracteres");
+        return;
+    }
     const verifyPsw = formUser === null || formUser === void 0 ? void 0 : formUser.repeatPassword.value;
     if (verifyPsw !== password) {
         return alert("As senhas precisam ser iguais!");
