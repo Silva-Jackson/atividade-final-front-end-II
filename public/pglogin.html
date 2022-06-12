@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Sistema de Recados</title>
+  </head>
+  <body>
+    <!-- alert na pagina de login nao ficou bom, testar validation + tooltip -->
+    <div id="wrapper" class="d-none">
+      <div id="loginAlert" class="alert d-none" role="alert"></div>
+    </div>
+    <main class="container-fluid vh-100">
+      <div id="container" class="row h-100 flex-row-reverse">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <div class="bg-light w-100 p-3 p-lg-5 m-lg-3 mx-xxl-5 rounded-4 bg-opacity-75 shadow-lg">
+            <form id="loginForm" class="form-validation" novalidate>
+              <h1 class="display-6 fw-semibold mb-5 text-center text-nowrap">Sistema de Recados</h1>
+              <div class="form-floating mb-lg-3 pt-2">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Username"
+                  autocomplete="off"
+                  required
+                  minlength="5"
+                />
+                <label for="username">Nome de Usuário</label>
+                <div class="invalid-feedback">
+                  O nome de usuário deve ter no mínimo 5 caracteres.
+                </div>
+              </div>
+              <div class="form-floating mb-4 mb-md-5 pt-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  autocomplete="off"
+                  required
+                  minlength="4"
+                />
+                <label for="password">Senha</label>
+                <div class="invalid-feedback">A senha deve ter no mínimo 4 caracteres.</div>
+              </div>
+              <div class="col-10 offset-1">
+                <input
+                  type="submit"
+                  class="btn btn-primary btn-lg rounded-pill w-100"
+                  value="Entrar"
+                />
+              </div>
+              <div class="">
+                <p class="text-center mt-3 mt-lg-5 text-secondary">
+                  Ainda não tem conta?
+                  <a href="pgcriarconta.html" class="link-primary">Criar Conta</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./js/index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

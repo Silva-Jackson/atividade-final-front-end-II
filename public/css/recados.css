@@ -257,3 +257,9 @@ a.logout:hover {
     transform: scale(1);
   }
 }
+
+/* body { */
+/* confirmar se põe gradient em tudo ou só nas divs e tabela  */
+/* background-image: linear-gradient(#fff9 0%, #fff2 100%), url("../images/background.jpg");
+  background-size: cover;
+} */

@@ -1,28 +1,29 @@
-:root {
+/* :root {
   --main-color: #1f66ff;
   --backgroung-color: #00000010;
   --text1: #666;
   --highlight-text: #333;
   --input-text: #555;
   --white-color: #fff;
-}
+} */
 
-body {
+/* body,
+main {
   padding: 0;
   margin: 0;
   width: 100vw;
   height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: var(--backgroung-color);
-}
+} */
 
-div#container {
+/* div#container {
   display: flex;
   height: 100%;
   width: 100%;
-}
+} */
 
-.section:first-child {
+/* .section:first-child {
   background-image: url(../assets/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -179,4 +180,55 @@ a:hover {
   text-decoration: none;
   color: var(--highlight-text);
   transition: all 0.4s;
+} */
+
+body {
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+input.form-control {
+  box-shadow: none !important;
+  background: none !important;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #666;
+}
+
+input.btn:focus,
+input.btn:hover,
+button.btn:focus {
+  /* border: none !important; */
+  box-shadow: none !important;
+  /* background-color: black; colocar cor secundaria*/
+  /* background: none !important; */
+}
+
+input.form-control:focus {
+  border-bottom: 2px solid #1f66ff;
+  transition: all 0.4s;
+}
+
+input.btn {
+  text-transform: uppercase;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  transition: all 0.4s;
+}
+
+.wrapper {
+  z-index: 999;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
 }
