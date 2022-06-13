@@ -39,7 +39,9 @@ const saveMessage = (event: Event): void => {
   if (user === "[]") {
     messageAlert("Você precisa estar logado para salvar um recado", "danger");
     // alert("Faça login para continuar");
-    location.href = "pglogin.html";
+    setTimeout(() => {
+      location.href = "pglogin.html";
+    }, 2000);
     return;
   }
   const description: string = form?.description.value;
@@ -108,7 +110,8 @@ const deleteMessage = (id: number) => {
 
   refreshMessageLocalStorage(messages);
   //alerta do bootstrap
-  alert("Recado removido com Sucesso");
+  // alert("Recado removido com Sucesso");
+  messageAlert("Recado removido com Sucesso", "success");
 
   fillTable();
 };
@@ -162,6 +165,15 @@ const editMessage = (id: number) => {
     return;
   }
 
+  if (modal.newDescription.value.length < 1) {
+    messageAlert("Por favor, insira uma descrição para o recado.", "danger");
+    return;
+  }
+  if (modal.newDetail.value.length < 1) {
+    messageAlert("Por favor, insira detalhes para o recado.", "danger");
+    return;
+  }
+
   const newMessage = [
     {
       user,
@@ -172,6 +184,8 @@ const editMessage = (id: number) => {
   ];
 
   message.splice(indexMessage, 1, newMessage[0]);
+
+  localStorage.removeItem("editedMessage");
 
   refreshMessageLocalStorage(message);
 
@@ -214,21 +228,19 @@ const messageAlert = (message: string, type: string) => {
   }, 2000);
 };
 
-const validateMessage = (): void => {
-  const messageForms = document.getElementsByClassName("form-validation");
+const messageForms = document.getElementsByClassName("form-validation");
 
-  Array.from(messageForms).forEach((messageForm: any) => {
-    messageForm.addEventListener("submit", (event: any) => {
-      if (!messageForm.checkValidity()) {
-        event.preventDefault();
-      }
-      messageForm.classList.add("was-validated");
-      setTimeout(() => {
-        messageForm.classList.remove("was-validated");
-      }, 4000);
-    });
+Array.from(messageForms).forEach((messageForm: any) => {
+  messageForm.addEventListener("submit", (event: any) => {
+    if (!messageForm.checkValidity()) {
+      event.preventDefault();
+    }
+    messageForm.classList.add("was-validated");
+    setTimeout(() => {
+      messageForm.classList.remove("was-validated");
+    }, 3000);
   });
-};
+});
 
 form?.addEventListener("submit", saveMessage);
 

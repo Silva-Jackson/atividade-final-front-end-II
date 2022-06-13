@@ -20,7 +20,9 @@ const saveMessage = (event) => {
     const user = checkCurrentUser();
     if (user === "[]") {
         messageAlert("Você precisa estar logado para salvar um recado", "danger");
-        location.href = "pglogin.html";
+        setTimeout(() => {
+            location.href = "pglogin.html";
+        }, 2000);
         return;
     }
     const description = form?.description.value;
@@ -73,7 +75,7 @@ const deleteMessage = (id) => {
         return;
     messages.splice(indexMessage, 1);
     refreshMessageLocalStorage(messages);
-    alert("Recado removido com Sucesso");
+    messageAlert("Recado removido com Sucesso", "success");
     fillTable();
 };
 const definirID = () => {
@@ -110,6 +112,14 @@ const editMessage = (id) => {
     if (indexMessage < 0) {
         return;
     }
+    if (modal.newDescription.value.length < 1) {
+        messageAlert("Por favor, insira uma descrição para o recado.", "danger");
+        return;
+    }
+    if (modal.newDetail.value.length < 1) {
+        messageAlert("Por favor, insira detalhes para o recado.", "danger");
+        return;
+    }
     const newMessage = [
         {
             user,
@@ -119,6 +129,7 @@ const editMessage = (id) => {
         },
     ];
     message.splice(indexMessage, 1, newMessage[0]);
+    localStorage.removeItem("editedMessage");
     refreshMessageLocalStorage(message);
     fillTable();
 };
@@ -145,19 +156,17 @@ const messageAlert = (message, type) => {
         alert.classList.add("d-none");
     }, 2000);
 };
-const validateMessage = () => {
-    const messageForms = document.getElementsByClassName("form-validation");
-    Array.from(messageForms).forEach((messageForm) => {
-        messageForm.addEventListener("submit", (event) => {
-            if (!messageForm.checkValidity()) {
-                event.preventDefault();
-            }
-            messageForm.classList.add("was-validated");
-            setTimeout(() => {
-                messageForm.classList.remove("was-validated");
-            }, 4000);
-        });
+const messageForms = document.getElementsByClassName("form-validation");
+Array.from(messageForms).forEach((messageForm) => {
+    messageForm.addEventListener("submit", (event) => {
+        if (!messageForm.checkValidity()) {
+            event.preventDefault();
+        }
+        messageForm.classList.add("was-validated");
+        setTimeout(() => {
+            messageForm.classList.remove("was-validated");
+        }, 3000);
     });
-};
+});
 form?.addEventListener("submit", saveMessage);
 document.addEventListener("DOMContentLoaded", fillTable);

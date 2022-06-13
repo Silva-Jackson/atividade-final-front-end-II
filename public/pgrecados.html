@@ -19,11 +19,11 @@
     <!-- <link rel="stylesheet" href="./css/recados.css" /> -->
     <style></style>
   </head>
-  <body class="vh-100">
+  <body class="vh-100 overflow-hidden">
     <div id="wrapper" class="d-none">
       <div id="messageAlert" class="alert d-none" role="alert"></div>
     </div>
-    <main class="container-fluid bg-dark h-100 bg-opacity-25">
+    <main class="container-fluid bg-dark h-100 bg-opacity-50">
       <div class="position-relative container-xxl">
         <button
           type="button"
@@ -37,7 +37,7 @@
       </div>
       <form
         id="messages"
-        class="container form-control bg-light bg-opacity-75 mb-3 form-validation"
+        class="container form-control bg-light bg-opacity-50 mb-3 form-validation border-0"
         novalidate
       >
         <div class="row my-3 my-md-5 gap-3 gap-lg-0">
@@ -80,8 +80,8 @@
 
       <!-- table -->
 
-      <div class="container bg-light bg-opacity-75 rounded py-1">
-        <table class="table table-striped table-hover text-center">
+      <div class="container bg-light bg-opacity-50 rounded py-1">
+        <table class="table table-striped table-hover text-center table-sm">
           <thead class="">
             <tr class="row">
               <th scope="col" class="col-2">Id</th>
@@ -93,8 +93,10 @@
           <tbody id="tableBody"></tbody>
         </table>
       </div>
-      <!-- adicionar background escuro -->
       <div id="modal" class="modal" tabindex="-1">
+        <div id="wrapper" class="d-none">
+          <div id="messageAlert" class="alert d-none" role="alert"></div>
+        </div>
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -119,6 +121,7 @@
                     required
                     autocomplete="off"
                   />
+                  <div class="invalid-feedback">Por favor, insira uma descrição para o recado.</div>
                 </div>
                 <div class="col-10 offset-1 col-md-6">
                   <label for="newDetail">Detalhes:</label>
@@ -131,6 +134,7 @@
                     required
                     autocomplete="off"
                   />
+                  <div class="invalid-feedback">Por favor, insira detalhes para o recado.</div>
                 </div>
               </div>
               <div class="modal-footer d-flex flex-row-reverse justify-content-start">

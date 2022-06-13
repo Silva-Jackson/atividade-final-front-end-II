@@ -221,7 +221,7 @@ a:hover {
 }
 
 .wrapper {
-  z-index: 999;
+  z-index: 9999;
   position: absolute;
   top: 50vh;
   left: 50vw;
@@ -231,4 +231,18 @@ a:hover {
 
 .modal {
   background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-dialog {
+  animation: modal 0.5s;
+}
+
+@keyframes modal {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
