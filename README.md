@@ -17,7 +17,7 @@
 <li><img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" height= "18px"> Typescript 4.7.3</li>
 </ul>
 
-<p><b>Melhorias nessa versão</b></p>
+<p><b>Melhorias nessa versão:</b></p>
 <p>Utilizados os conceitos de Flexbox, Grid, Animations, e recursos do Bootstrap como: Modal, Inputs, Tables etc.</p>
 
 <p><b>Como usar:</b></p>
