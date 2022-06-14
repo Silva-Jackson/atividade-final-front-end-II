@@ -40,7 +40,7 @@ a:hover {
 .wrapper {
   z-index: 9999;
   position: absolute;
-  top: 50vh;
+  top: 10vh;
   left: 50vw;
   transform: translate(-50%, -50%);
 }
