@@ -21,8 +21,8 @@ const saveMessage = (event) => {
     if (user === "[]") {
         messageAlert("Você precisa estar logado para salvar um recado", "danger");
         setTimeout(() => {
-            location.href = "pglogin.html";
-        }, 2000);
+            location.href = "index.html";
+        }, 4000);
         return;
     }
     const description = form?.description.value;
@@ -37,7 +37,6 @@ const saveMessage = (event) => {
         return;
     }
     message.push({
-        user,
         id: definirID() + 1,
         description,
         details,
@@ -57,12 +56,10 @@ const fillTable = () => {
     <td class="col-4 col-xl-5">${messages.details}</td>
     <td class="col-3">
       <button
-        class="btn btn-success bi-pencil-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 me-lg-3" onclick="createEdit(${messages.id}),
-        document.getElementById('modal').style.display='block'
-        "
+        class="btn btn-success bi-pencil-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 me-lg-3" data-bs-toggle="tooltip" title="Editar recado" onclick="createEdit(${messages.id}),document.getElementById('modal').style.display='block'"
       ></button>
       <button
-        class="btn btn-danger bi-trash3-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 mg-lg-3" onclick="deleteMessage(${messages.id})"
+        class="btn btn-danger bi-trash3-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 mg-lg-3" data-bs-toggle="tooltip" title="Apagar recado" onclick="deleteMessage(${messages.id})"
       ></button>
     </td>
   </tr>`;
@@ -122,7 +119,6 @@ const editMessage = (id) => {
     }
     const newMessage = [
         {
-            user,
             id: indexMessage + 1,
             description: modal.newDescription.value,
             details: modal.newDetail.value,
@@ -140,7 +136,9 @@ const closeModal = () => {
 };
 const userLogout = () => {
     localStorage.removeItem("currentUser");
-    location.href = "pglogin.html";
+    setTimeout(() => {
+        location.href = "index.html";
+    }, 2000);
 };
 const messageAlert = (message, type) => {
     const alert = document.getElementById("messageAlert");

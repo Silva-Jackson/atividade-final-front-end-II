@@ -1,187 +1,3 @@
-/* :root {
-  --main-color: #1f66ff;
-  --backgroung-color: #00000010;
-  --text1: #666;
-  --highlight-text: #333;
-  --input-text: #555;
-  --white-color: #fff;
-} */
-
-/* body,
-main {
-  padding: 0;
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: var(--backgroung-color);
-} */
-
-/* div#container {
-  display: flex;
-  height: 100%;
-  width: 100%;
-} */
-
-/* .section:first-child {
-  background-image: url(../assets/background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  margin: 10px;
-}
-
-p {
-  margin-top: 25px;
-  text-align: center;
-}
-
-input,
-button {
-  outline: none !important;
-  border: none;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.text1 {
-  color: var(--text1);
-}
-
-.text2 {
-  color: var(--main-color);
-}
-
-.margin-bottom-35 {
-  margin-bottom: 35px;
-}
-.margin-top-35 {
-  margin-top: 35px;
-}
-.margin-bottom-8 {
-  margin-bottom: 8px;
-}
-.margin-top-8 {
-  margin-top: 8px;
-}
-
-.loginForm {
-  width: 90%;
-}
-
-.loginFormTitle {
-  display: block;
-  font-size: 30px;
-  color: var(--highlight-text);
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.wrapInput {
-  max-width: 60%;
-  max-height: 100%;
-  position: relative;
-  border-bottom: 2px solid var(--text1);
-  margin: 5% 20%;
-}
-
-.inputForm {
-  font-size: 18px;
-  color: var(--input-text);
-  line-height: 1.2;
-  display: block;
-  width: 100%;
-  height: 75px;
-  background: transparent;
-  padding: 0 5px;
-}
-
-.focusInputForm {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.focusInputForm::before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 5%;
-  transition: all 0.4s;
-  background-color: var(--main-color);
-}
-
-.focusInputForm::after {
-  font-size: 18px;
-  color: var(--text1);
-  line-height: 1.2;
-  content: attr(data-placeholder);
-  display: block;
-  width: 100%;
-  position: absolute;
-  top: 15px;
-  left: 0px;
-  padding-left: 5px;
-  transition: all 0.4s;
-}
-
-.inputForm:focus + .focusInputForm::after {
-  top: -20px;
-  font-size: 15px;
-}
-
-.inputForm:focus + .focusInputForm::before {
-  width: 100%;
-}
-
-.has-val.inputForm + .focusInputForm::after {
-  top: -20px;
-  font-size: 15px;
-}
-
-.has-val.inputForm + .focusInputForm::before {
-  width: 100%;
-}
-
-.loginFormBtn {
-  font-size: 16px;
-  color: var(--white-color);
-  text-transform: uppercase;
-  width: 50%;
-  height: 50px;
-  background-color: var(--main-color);
-  border-radius: 10px;
-  transition: all 0.4s;
-  font-weight: bold;
-  margin: 5% 25%;
-}
-
-.loginFormBtn:hover {
-  background-color: var(--input-text);
-}
-
-a:hover {
-  text-decoration: none;
-  color: var(--highlight-text);
-  transition: all 0.4s;
-} */
-
 body {
   background-image: url(../images/background.jpg);
   background-size: cover;
@@ -193,21 +9,22 @@ input.form-control {
   background: none !important;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid #666;
+  border-bottom: 2px solid #6c757d;
 }
 
 input.btn:focus,
 input.btn:hover,
 button.btn:focus {
-  /* border: none !important; */
   box-shadow: none !important;
-  /* background-color: black; colocar cor secundaria*/
-  /* background: none !important; */
 }
 
 input.form-control:focus {
-  border-bottom: 2px solid #1f66ff;
+  border-bottom: 2px solid #0d6efd;
   transition: all 0.4s;
+}
+
+input.animate:focus {
+  animation: inputborder 0.5s ease-in;
 }
 
 input.btn {
@@ -226,7 +43,6 @@ a:hover {
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -50%);
-  /* background-color: rgba(0, 0, 0, 0.5); */
 }
 
 .modal {
@@ -244,5 +60,17 @@ a:hover {
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes inputborder {
+  0% {
+    border-bottom: 2px solid #0d6efd;
+    width: 0;
+    left: 0;
+  }
+  100% {
+    border-bottom: 2px solid #0d6efd;
+    width: 100%;
   }
 }

@@ -32,7 +32,7 @@ const login = (event: Event) => {
 
   localStorage.setItem("currentUser", currentUser);
 
-  location.href = "pgrecados.html";
+  location.href = "recados.html";
 };
 
 const loginAlert = (message: string, type: string) => {

@@ -19,7 +19,7 @@ const login = (event) => {
     }
     const currentUser = foundUser.username;
     localStorage.setItem("currentUser", currentUser);
-    location.href = "pgrecados.html";
+    location.href = "recados.html";
 };
 const loginAlert = (message, type) => {
     const alert = document.getElementById("loginAlert");

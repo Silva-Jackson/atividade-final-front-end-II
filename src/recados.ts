@@ -5,7 +5,7 @@ const table = document.querySelector("#tableBody") as HTMLTableElement;
 const modal = document.querySelector("#editMessage") as HTMLFormElement;
 
 interface Message {
-  user: string;
+  // user: string;
   id: number;
   description: string;
   details: string;
@@ -38,10 +38,10 @@ const saveMessage = (event: Event): void => {
 
   if (user === "[]") {
     messageAlert("Você precisa estar logado para salvar um recado", "danger");
-    // alert("Faça login para continuar");
+
     setTimeout(() => {
-      location.href = "pglogin.html";
-    }, 2000);
+      location.href = "index.html";
+    }, 4000);
     return;
   }
   const description: string = form?.description.value;
@@ -60,14 +60,14 @@ const saveMessage = (event: Event): void => {
   }
 
   message.push({
-    user,
+    // user,
     id: definirID() + 1,
     description,
     details,
   });
 
   messageAlert("Recado salvo com Sucesso", "success");
-  // alert("Recado adicionado com sucesso!");
+
   refreshMessageLocalStorage(message);
 
   fillTable();
@@ -87,12 +87,10 @@ const fillTable = (): void => {
     <td class="col-4 col-xl-5">${messages.details}</td>
     <td class="col-3">
       <button
-        class="btn btn-success bi-pencil-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 me-lg-3" onclick="createEdit(${messages.id}),
-        document.getElementById('modal').style.display='block'
-        "
+        class="btn btn-success bi-pencil-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 me-lg-3" data-bs-toggle="tooltip" title="Editar recado" onclick="createEdit(${messages.id}),document.getElementById('modal').style.display='block'"
       ></button>
       <button
-        class="btn btn-danger bi-trash3-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 mg-lg-3" onclick="deleteMessage(${messages.id})"
+        class="btn btn-danger bi-trash3-fill text-light p-1 px-sm-2 px-lg-3 ms-sm-3 mg-lg-3" data-bs-toggle="tooltip" title="Apagar recado" onclick="deleteMessage(${messages.id})"
       ></button>
     </td>
   </tr>`;
@@ -109,8 +107,7 @@ const deleteMessage = (id: number) => {
   messages.splice(indexMessage, 1);
 
   refreshMessageLocalStorage(messages);
-  //alerta do bootstrap
-  // alert("Recado removido com Sucesso");
+
   messageAlert("Recado removido com Sucesso", "success");
 
   fillTable();
@@ -176,7 +173,7 @@ const editMessage = (id: number) => {
 
   const newMessage = [
     {
-      user,
+      // user,
       id: indexMessage + 1,
       description: modal.newDescription.value,
       details: modal.newDetail.value,
@@ -202,8 +199,9 @@ const closeModal = (): void => {
 
 const userLogout = (): void => {
   localStorage.removeItem("currentUser");
-
-  location.href = "pglogin.html";
+  setTimeout(() => {
+    location.href = "index.html";
+  }, 2000);
 };
 
 const messageAlert = (message: string, type: string) => {

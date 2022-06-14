@@ -44,7 +44,7 @@ const createUser = (event) => {
     refreshUserLocalStorage(users);
     userAlert("Usuário cadastrado com sucesso!", "success");
     setTimeout(() => {
-        location.href = "pglogin.html";
+        location.href = "index.html";
     }, 2000);
 };
 const userAlert = (message, type) => {

@@ -23,7 +23,7 @@ const createUser = (event: Event) => {
 
   if (email.length < 5) {
     userAlert("Digite um email válido!", "danger");
-    // alert("Digite um email válido!");
+
     return;
   }
 
@@ -31,21 +31,21 @@ const createUser = (event: Event) => {
 
   if (username.length < 5) {
     userAlert("Digite um nome de usuário válido!", "danger");
-    // alert("Digite um nome de usuário com ao menos 5 caracteres!");
+
     return;
   }
   const password: string = userForm?.password.value;
 
   if (password.length < 4) {
     userAlert("Digite uma senha válida!", "danger");
-    // alert("Digite uma senha com ao menos 4 caracteres");
+
     return;
   }
   const verifyPsw: string = userForm?.repeatPassword.value;
 
   if (verifyPsw !== password) {
     userAlert("As senhas não conferem!", "danger");
-    // return alert("As senhas precisam ser iguais!");
+
     return;
   }
 
@@ -62,7 +62,7 @@ const createUser = (event: Event) => {
   );
   if (userExists) {
     userAlert("Usuário ou email já cadastrado!", "danger");
-    // alert("Usuário já existe!");
+
     return;
   }
 
@@ -73,7 +73,7 @@ const createUser = (event: Event) => {
   userAlert("Usuário cadastrado com sucesso!", "success");
 
   setTimeout(() => {
-    location.href = "pglogin.html";
+    location.href = "index.html";
   }, 2000);
 };
 
