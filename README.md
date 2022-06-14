@@ -1,6 +1,6 @@
 ![Logo of the project](./public/readme-images/logo.png)
 
-<h1>Avaliação final do Módulo Front End II - Growdev</h1>
+<h1>Avaliação Final do Módulo Front End II - Growdev</h1>
 
 <h2>Melhorando o sistema de gerenciamento de recados.</h2>
 <br>
