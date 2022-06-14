@@ -5,7 +5,6 @@ const table = document.querySelector("#tableBody") as HTMLTableElement;
 const modal = document.querySelector("#editMessage") as HTMLFormElement;
 
 interface Message {
-  // user: string;
   id: number;
   description: string;
   details: string;
@@ -60,7 +59,6 @@ const saveMessage = (event: Event): void => {
   }
 
   message.push({
-    // user,
     id: definirID() + 1,
     description,
     details,
@@ -173,7 +171,6 @@ const editMessage = (id: number) => {
 
   const newMessage = [
     {
-      // user,
       id: indexMessage + 1,
       description: modal.newDescription.value,
       details: modal.newDetail.value,
